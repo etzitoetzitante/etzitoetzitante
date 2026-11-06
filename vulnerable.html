@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SOLRACTABMX HIP HOP - TEST</title>
+<style>
+body{background:#0A0A0A;color:white;font-family:monospace;padding:20px}
+.card{background:#1A1A1A;padding:20px;border:1px solid #00FF88;margin-top:20px}
+h1{color:#00FF88}
+</style>
+</head>
+<body>
+<h1>SOLRACTABMX HIP HOP VERSE</h1>
+<p>Esta es una página de prueba vulnerable a propósito</p>
+
+<div class="card">
+<h3>Buscador de versos:</h3>
+<form>
+<input type="text" name="q" placeholder="busca un verso..." style="width:80%;padding:10px">
+<button type="submit">Buscar</button>
+</form>
+<div id="resultado"></div>
+</div>
+
+<script>
+// ESTO ES VULNERABLE A PROPÓSITO - NO LO HAGAS EN PRODUCCIÓN
+// Aquí es donde el scanner te va a dejar el aviso
+const params = new URLSearchParams(window.location.search);
+const q = params.get('q');
+if(q){
+    // VULNERABILIDAD: innerHTML sin filtrar
+    document.getElementById('resultado').innerHTML = "Resultado para: " + q;
+}
+</script>
+
+</body>
+</html>
